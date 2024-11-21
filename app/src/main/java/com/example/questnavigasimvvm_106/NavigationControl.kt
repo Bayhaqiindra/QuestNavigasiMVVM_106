@@ -22,6 +22,9 @@ import androidx.navigation.Navigation
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.questnavigasimvvm_106.model.JenisKelamin.JenisK
+import com.example.questnavigasimvvm_106.ui.view.FormulirView
+import com.example.questnavigasimvvm_106.ui.view.TampilDataView
 
 enum class Halaman {
     FORMULIR,
@@ -43,7 +46,25 @@ fun NavigationControl(
             navController = navHost,
             startDestination = Halaman.FORMULIR.name
         ) {
-
+            composable(
+                route = Halaman.FORMULIR.name
+            ) {
+                val konteks = LocalContext.current
+                FormulirView(
+                    listJK = JenisK.map { id ->
+                        konteks.getString(id)
+                    },
+                    onSumbitClicked = {
+                        viewModel.saveDataSiswa(it)
+                        navHost.navigate(Halaman.TAMPILDATA.name)
+                    }
+                )
+            }
+            composable(route = Halaman.TAMPILDATA.name) {
+                TampilDataView(uiState = uiState, onBackButton = {
+                    navHost.popBackStack()
+                })
+            }
         }
     }
 }
