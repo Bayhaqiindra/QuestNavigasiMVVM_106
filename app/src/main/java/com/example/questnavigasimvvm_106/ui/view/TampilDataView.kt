@@ -47,7 +47,18 @@ fun TampilData(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-
+            Text(
+                text = param,
+                modifier = Modifier.weight(0.8f)
+            )
+            Text(
+                text = ":",
+                modifier = Modifier.weight(0.2f)
+            )
+            Text(
+                text = argu,
+                modifier = Modifier.weight(2f)
+            )
         }
     }
 }
