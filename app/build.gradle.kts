@@ -5,7 +5,7 @@
 
 android {
     namespace = "com.example.questnavigasimvvm_106"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.questnavigasimvvm_106"
